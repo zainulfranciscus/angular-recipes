@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp">
+
+<p>This page demonstrates the difference between root scope and a scope. A root scope is a scope created on the HTML elements that contains the ng-app directive. A root scope is available in the entire application.</p>
+
+<p>In this page, a variable color exist both in the root scope and controller's scope. This application display color which exist in the current scope. </p>
+<p>The rootScope's favorite color:</p>
+<h1>{{color}}</h1>
+
+<div ng-controller="myCtrl">
+
+<p>The scope of the controller's favorite color:</p>
+<h1>{{color}}</h1>
+
+</div>
+
+<p>The rootScope's favorite color is still:</p>
+<h1>{{color}}</h1>
+
+<script>
+	var app = angular.module('myApp', []);
+	app.run(function($rootScope) {
+	    $rootScope.color = 'blue';
+	});
+	app.controller('myCtrl', function($scope) {
+	    $scope.color = "red";
+	});
+</script>
+
+<p>Notice that controller's color variable does not overwrite the rootScope's color value.</p>
+
+</body>
+</html>
