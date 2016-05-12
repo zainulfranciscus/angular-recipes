@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<p>The purpose of this page is to demonstrate two-way data binding in AngularJS.</p>
+<p>AngularJS updates view when a model is updated. In this example, anything we typed into the text field will appear underneath this</p>
+<div ng-app="">
+ 	<p>Model : <input type="text" ng-model="name"></p>
+ 	<h1>Watch this content updated [{{name}}]</h1>
+</div>
+
+</body>
+</html>
