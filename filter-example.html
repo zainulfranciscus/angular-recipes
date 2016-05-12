@@ -8,11 +8,20 @@
 <div ng-app="myApp" ng-controller="namesCtrl"> 
 
 <input type="text" ng-model="searchText"/>
-<ul>
-  <li ng-repeat="x in names | filter:searchText | orderBy:'country'">
-  	Name in uppercase : {{x.name | uppercase}}, country in lowercase: {{x.country | lowercase}},income: {{x.income | currency : x.currency : 3}}    
-  </li>
-</ul>
+
+<table border="1" width="100%">
+  <tr>
+    <th ng-click="orderByMe('name')">Name (uppercase)</th>
+    <th ng-click="orderByMe('country')">Country (lower case)</th>
+    <th ng-click="orderByMe('income')">Income (with 3 fractions)</th>    
+  </tr>
+  <tr ng-repeat="x in names | filter:searchText | orderBy:myOrderBy">
+    <td>{{x.name | uppercase}}</td>
+    <td>{{x.country | lowercase}}</td>
+    <td>{{x.income | currency : x.currency : 3}}</td>
+  </tr>
+</table>
+
 
 </div>
 
