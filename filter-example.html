@@ -3,7 +3,11 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 <p>
-	The purpose of this script is to demonstrate various built-in filters in Angular JS.
+	The purpose of this script is to demonstrate various built-in filters in Angular JS. such as lower case, currency, and filter.
+
+	This page also demonstrates a custom filter named 'capitalizeFirstLetter', which is constructed using a filter factory.
+
+
 </p>
 <div ng-app="myApp" ng-controller="namesCtrl"> 
 
@@ -11,12 +15,12 @@
 
 <table border="1" width="100%">
   <tr>
-    <th ng-click="orderByMe('name')">Name (uppercase)</th>
+    <th ng-click="orderByMe('name')">Name (capitalize first letter)</th>
     <th ng-click="orderByMe('country')">Country (lower case)</th>
     <th ng-click="orderByMe('income')">Income (with 3 fractions)</th>    
   </tr>
   <tr ng-repeat="x in names | filter:searchText | orderBy:myOrderBy">
-    <td>{{x.name | uppercase}}</td>
+    <td>{{x.name | capitalizeFirstLetter}}</td>
     <td>{{x.country | lowercase}}</td>
     <td>{{x.income | currency : x.currency : 3}}</td>
   </tr>
