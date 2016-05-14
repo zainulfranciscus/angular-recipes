@@ -5,26 +5,30 @@
 
 	<div ng-app="myApp" ng-controller="myCtrl"> 
 
-	<p>Today's welcome message is:</p>
+		<p>This page demonstrates the use of $http service request a page on a server. </p>
 
-	<h1>{{myWelcome}}</h1>
+		<p>The data property from the response is <strong>{{responseData}}</strong></p>
+
+		<p>The config property used to made the request is <strong>{{config}}</strong></p>
+
+		<p>The status of the response is <strong>{{status}}</strong></p>
 
 	</div>
 
-	<p>The $http service requests a page on the server, and the response is set as the value of the "myWelcome" variable.</p>
+	
 
 	<script>
 	var app = angular.module('myApp', []);
 	app.controller('myCtrl', function($scope, $http) {
 
-		$http({
-	        method : "GET",
-	        url : "test.html"
-	    }).then(function mySucces(response) {
-	        $scope.myWelcome = response.data;
+		$http.get("test.html").then(function mySucces(response) {
+	        $scope.responseData = response.data;
+	        $scope.config = response.config;
+	        $scope.status = response.status;
 	    }, function myError(response) {
 	        $scope.myWelcome = response.statusText;
 	    });
+
 	 
 	});
 	</script>
