@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+
+<style>
+input.ng-invalid {
+    background-color: pink;
+}
+input.ng-valid {
+    background-color: lightgreen;
+}
+</style>
+
+<body ng-app="">
+
+<p>With AngularJS, form validation is a breeze. Just put the 'required' attribute on input field that is mandatory.</p>
+<p>Required fields that are invalid has ng-invalid class onto it. Once those required fields are filled, then ng-valid class will be attached to the required fields.</p>
+
+<form name="myForm">
+Enter first name (required): <input name="firstName" ng-model="firstName" required> <span ng-show="myForm.firstName.$invalid">The first name is required.</span><br>
+Enter last name (required): <input name="lastName" ng-model="lastName" required> <span ng-show="myForm.lastName.$invalid">The last name is required.</span>
+</form>
+
+
+<p>There are {{myForm.$error.required.length}} required fields that have not been fille</p>
+
+<ul>
+  <li ng-repeat="requiredInput in myForm.$error.required">
+    {{ requiredInput.$name}}
+  </li>
+</ul>
+
+
+
+</body>
+</html>
