@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ngMessages Demo</title>
+    
+    <!-- CSS -->
+    <!-- load bootstrap and add some custom css -->
+  
+    <style>body { padding-top:50px; }</style>
+    
+    <!-- JS -->
+    <script src="http://code.angularjs.org/1.4.0/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+   
+</head>
+
+
+<body class="container" ng-app="app" ng-controller="MainCtrl as main">
+    
+    <p>This form demonstrates the use of ng-messages to display validation error messages in a form.</p>
+
+
+    
+    <form name="userForm" novalidate>
+        
+     
+        <!-- email field -->
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" 
+                ng-model="main.email"
+                ng-minlength="5"
+                ng-maxlength="20"
+                required>
+                
+            <!-- ngMessages goes here -->
+        </div>
+        
+    </form>
+
+
+
+    <div class="help-block" ng-messages="userForm.email.$error">
+        <div ng-messages-include="messages.html"></div>
+    </div>
+
+    <script>
+      angular
+      .module('app', ['ngMessages'])
+      .controller('MainCtrl', MainCtrl);
+      
+      function MainCtrl() {
+        
+      }
+
+    </script>
+
+
+    
+</body>
+</html>

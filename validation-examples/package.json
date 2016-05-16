@@ -1,0 +1,15 @@
+{
+  "name": "inline-css",
+  "version": "1.0.0",
+  "description": "a tool that put inline css into HTML files",
+  "main": "build/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zainul Franciscus",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.6.4",
+     "gulp": "^3.8.11"
+  }
+}
