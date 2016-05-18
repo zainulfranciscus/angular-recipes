@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="app" >
+
+	<div ng-sparkline ng-city="Melbourne,Australia"></div>
+	
+
+	<script>
+		var app = angular.module('app', []);
+		app.directive('ngSparkline', function() {
+		  return {
+		    restrict: 'A',		    
+		    scope: {
+		      ngCity: '@'
+		    },
+		    template: '<div class="sparkline"><h4>Weather for {{ngCity}} is {{weather}}</h4></div>',
+		    controller: ['$scope', '$http', function($scope, $http) {
+		      	var url = "http://api.openweathermap.org/data/2.5/weather?appid=a09730059079a2ebdaebda727d99c99e&q="
+ 
+				$scope.getTemp = function(city) {
+				  $http({
+				    method: 'GET',
+				    url: url + city
+				  }).success(function(data) {
+				  	
+				    var weather = [];
+				    angular.forEach(data.weather, function(value){
+				      weather.push(value.description);
+				    });
+				    $scope.weather = weather;
+				  });
+				}
+		    }],
+		    link: function(scope, iElement, iAttrs, ctrl) {
+
+		      scope.getTemp(iAttrs.ngCity);
+		    }
+		  }
+		});
+
+
+	</script>
+
+	
+
+</div>
+</body>
+</html>
